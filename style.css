@@ -32,7 +32,7 @@ dd {
   padding-left: 20px; }
 
 #nmis_list, #lga_list {
-  height: 600px;
+ /* height: 600px;*/
   overflow: auto; }
   #nmis_list .facilities, #lga_list .facilities {
     background-color: white; }

@@ -6,22 +6,23 @@ var TabsDemoCtrl = function ($scope) {
   ];
 };
 
-var FaciltiesListCtrl = function ($scope) {
+function  FaciltiesListCtrl($scope) {
   $scope.facilities = [
-    { 'facility_name' : 'Uratta Health Centre',
+    { 'facility_name' : 'Uratta Health Centre', 'sector':'health',
         'state' : 'abia', 'lga': 'aba_north',
         'ward': 'Uratta', 'community': 'Umughbuji',
         'facility_type': 'primaryhealthcarecentre'
-    }, { 'facility_name' : 'Asaokpuaja Health Centre',
+    }, { 'facility_name' : 'Asaokpuaja Health Centre', 'sector':'education',
         'facility_type' : 'healthpostdispensary',
         'state' : 'abia', 'lga': 'aba_north',
-        'ward': 'Asaokpuaja', 'community': 'Asaokpuaja',
+        'ward': 'Asaokpuaja', 'community': 'Asaokpuaja'
     }
   ];
-
+  $scope.predicate = 'facility_name';
+  $scope.radioModel = 'Name';
   $scope.sortby = function(key) {
-      $scope.facilities = _.sortBy($scope.facilities,
-              function(fac) { return fac[key]; });
+    $scope.facilities = _.sortBy($scope.facilities, 
+            function(fac){ return fac[key];});
   };
 };
 

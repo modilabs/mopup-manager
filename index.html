@@ -4,6 +4,7 @@
     <script src="http://underscorejs.org/underscore-min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
+    <script src="http://raw.github.com/dorey/csv.js/master/lib/csv.js"></script>
     <script src="example.js"></script>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
    <link href="style.css" rel="stylesheet">
@@ -13,31 +14,41 @@
 <div ng-controller="TabsDemoCtrl">
     <tabs>
         <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
-        
-        <div ng-controller="FaciltiesListCtrl">
-        Sort by: 
-        <button class="btn" ng-click="sortby('facility_name')"> Name </button>
-        <button class="btn" ng-click="sortby('facility_type')"> Type </button>
-        <button class="btn" ng-click="sortby('ward')"> Ward </button>
-        <button class="btn" ng-click="sortby('community')"> Community </button>
-             <dl ng-repeat="facility in facilities">
-                <dt>Name:</dt> <dd> {{facility.facility_name}}</dd>
-                <dt>LGA:</dt> <dd> {{facility.lga}}</dd>
-                <dt> State: </dt> 
-                   <dd> {{facility.state}}</dd>
-                <dt> Ward </dt>
-                    <dd> {{facility.ward}} </dd>
-                <dt> Community </dt>
-                    <dd> {{facility.community}}</dd>
-            </dl>
-           </div>
-        </pane>
-    </tabs>
-    <div class="row-fluid">
-        <button class="btn" ng-click="panes[0].active = true">Swith to Health Facilities</button>
-        <button class="btn" ng-click="panes[1].active = true">Swith to Education Facilities</button>
-        
-    </div>
-</div>
-  </body>
+        <div class = "row-fluid data data-list">
+            <div class = "span12">
+                    <div class = "span4" ng-controller = "FaciltiesListCtrl">
+                        Sort by: 
+                            <div class = "btn-group" data-toggle="buttons-checkbox">
+                                <button class="btn" btn-radio="'Name'" ng-model="radioModel" ng-click="sortby('facility_name')"> Name </button> 
+                                <button class="btn" btn-radio="'Type'" ng-model="radioModel" ng-click="sortby('facility_type')"> Type </button>
+                                <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="sortby('ward')"> Ward </button>
+                                <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="sortby('community')"> Community </button>
+                            </div>    
+                            <div id = "nmis_list">    
+                                <h4> NMIS Facilities </h4>
+                                <div ng-repeat = "facility in facilities" class = "facilities"> 
+                                    <dl popover="This is a pop over!"
+                                    popover-title="Popover"
+                                    popover-placement="right">
+                                        <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                        <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
+                                        <dt> State: </dt> <dd> {{facility.state}}</dd><br>
+                                        <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                        <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                        <dt> Facility Type: </dt> <dd>
+{{facility.facility_type}}</dd> <br>
+                                    </dl>
+                                    </div><!-- facilities -->
+                            </div><!-- nmis_list -->  
+                        </div><!-- span4 -->
+            </pane>
+        </tabs>
+            </div><!--span12 -->
+                <div class = "span4">
+                    <button class="btn" ng-click="panes[0].active = true">Switch to Health</button>
+                    <button class="btn" ng-click="panes[1].active = true">Switch to Education</button>
+                </div>
+            </div><!-- row-fluid data data-list -->
+        </div><!-- TabsDemoCtrl -->
+    </body>
 </html>
