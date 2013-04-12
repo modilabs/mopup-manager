@@ -4,17 +4,39 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
     <script src="example.js"></script>
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-  </head>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
+    <script type ="text/css">
+    dt {
+        display: inline-block;
+    }
+    dd {
+        display: inline-block;
+    }
+    </script>
+    </head>
   <body>
 
 <div ng-controller="TabsDemoCtrl">
     <tabs>
-        <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">{{pane.content}}</pane>
+        <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
+           <div ng-controller="FaciltiesListCtrl">
+             <dl ng-repeat="facility in facilities">
+                <dt>Name:</dt> <dd> {{facility.facility_name}}</dd>
+                <dt>LGA:</dt> <dd> {{facility.lga}}</dd>
+                <dt> State: </dt> 
+                   <dd> {{facility.state}}</dd>
+                <dt> Ward </dt>
+                    <dd> {{facility.ward}} </dd>
+                <dt> Community </dt>
+                    <dd> {{facility.community}}</dd>
+            </dl>
+           </div>
+        </pane>
     </tabs>
     <div class="row-fluid">
-        <button class="btn" ng-click="panes[0].active = true">Select second tab</button>
-        <button class="btn" ng-click="panes[1].active = true">Select third tab</button>
+        <button class="btn" ng-click="panes[0].active = true">Swith to Health Facilities</button>
+        <button class="btn" ng-click="panes[1].active = true">Swith to Education Facilities</button>
+        
     </div>
 </div>
   </body>
