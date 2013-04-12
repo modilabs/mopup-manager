@@ -8,21 +8,21 @@ var TabsDemoCtrl = function ($scope) {
 
 var FaciltiesListCtrl = function ($scope) {
   $scope.facilities = [
-  { 'facility_name' : 'Uratta Health Centre',
-    'state' : 'abia',
-    'lga': 'aba_north',
-    'ward': 'Uratta',
-    'community': 'Umughbuji',
-    'facility_type': 'primaryhealthcarecentre'
-  }, {
-    'facility_name' : 'Asaokpuaja Health Centre',
-    'facility_type' : 'healthpostdispensary',
-    'state' : 'abia',
-    'lga': 'aba_north',
-    'ward': 'Asaokpuaja',
-    'community': 'Asaokpuaja',
-  }
+    { 'facility_name' : 'Uratta Health Centre',
+        'state' : 'abia', 'lga': 'aba_north',
+        'ward': 'Uratta', 'community': 'Umughbuji',
+        'facility_type': 'primaryhealthcarecentre'
+    }, { 'facility_name' : 'Asaokpuaja Health Centre',
+        'facility_type' : 'healthpostdispensary',
+        'state' : 'abia', 'lga': 'aba_north',
+        'ward': 'Asaokpuaja', 'community': 'Asaokpuaja',
+    }
   ];
+
+  $scope.sortby = function(key) {
+      $scope.facilities = _.sortBy($scope.facilities,
+              function(fac) { return fac[key]; });
+  };
 };
 
 var NMISListCtrl = function ($scope) {

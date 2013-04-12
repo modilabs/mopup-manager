@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="plunker">
   <head>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
     <script src="example.js"></script>
@@ -19,7 +20,13 @@
 <div ng-controller="TabsDemoCtrl">
     <tabs>
         <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
-           <div ng-controller="FaciltiesListCtrl">
+        
+        <div ng-controller="FaciltiesListCtrl">
+        Sort by: 
+        <button class="btn" ng-click="sortby('facility_name')"> Name </button>
+        <button class="btn" ng-click="sortby('facility_type')"> Type </button>
+        <button class="btn" ng-click="sortby('ward')"> Ward </button>
+        <button class="btn" ng-click="sortby('community')"> Community </button>
              <dl ng-repeat="facility in facilities">
                 <dt>Name:</dt> <dd> {{facility.facility_name}}</dd>
                 <dt>LGA:</dt> <dd> {{facility.lga}}</dd>
