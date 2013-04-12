@@ -22,6 +22,9 @@ body {
 .matched {
   text-align: center; }
 
+	dl{
+		padding: 10px;
+	}
 dt {
   display: inline-block; }
 
