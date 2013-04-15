@@ -14,7 +14,7 @@ function populate_list(csv_addr, $scope, $http) {
       $scope.radioModel = 'Name';
       $scope.sortby = function(key) {
         $scope.facilities = _.sortBy($scope.facilities, 
-                function(fac){ return fac[key];});
+                function(fac){ return fac[key].toLowerCase();});
       };
     });
 }

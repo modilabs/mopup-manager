@@ -25,8 +25,8 @@
                                 <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="sortby('ward')"> Ward </button>
                                 <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="sortby('community')"> Community </button>
                             </div>    
+                            <h4> Official LGA facility list ({{facilities.length}}) </h4>
                             <div id = "lga_list">
-                                <h4> Official LGA facility list ({{facilities.length}}) </h4>
                                 <div ng-repeat = "facility in facilities" class = "facilities"> 
                                     <dl>
                                         <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
@@ -40,9 +40,16 @@
                                     </div><!-- facilities -->
                             </div><!-- facility_list-->  
                         </div><!-- span4 -->
-                    <div class = "span4" ng-controller = "NMISListCtrl" style="display:none">
+                    <div class = "span4" ng-controller = "NMISListCtrl"> 
+                        Sort by: 
+                            <div class = "btn-group" data-toggle="buttons-checkbox">
+                                <button class="btn" btn-radio="'Name'" ng-model="radioModel" ng-click="sortby('facility_name')"> Name </button> 
+                                <button class="btn" btn-radio="'Type'" ng-model="radioModel" ng-click="sortby('facility_type')"> Type </button>
+                                <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="sortby('ward')"> Ward </button>
+                                <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="sortby('community')"> Community </button>
+                            </div>    
+                            <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
                             <div id = "nmis_list">
-                                <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
                                 <div ng-repeat = "facility in facilities" class = "facilities"> 
                                     <dl>
                                         <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
