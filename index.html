@@ -25,12 +25,10 @@
                                 <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="sortby('ward')"> Ward </button>
                                 <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="sortby('community')"> Community </button>
                             </div>    
-                            <div id = "nmis_list">    
-                                <h4> NMIS Facilities </h4>
+                            <div id = "lga_list">
+                                <h4> Official LGA facility list ({{facilities.length}}) </h4>
                                 <div ng-repeat = "facility in facilities" class = "facilities"> 
-                                    <dl popover="This is a pop over!"
-                                    popover-title="Popover"
-                                    popover-placement="right">
+                                    <dl>
                                         <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
                                         <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
                                         <dt> State: </dt> <dd> {{facility.state}}</dd><br>
@@ -40,15 +38,27 @@
 {{facility.facility_type}}</dd> <br>
                                     </dl>
                                     </div><!-- facilities -->
-                            </div><!-- nmis_list -->  
+                            </div><!-- facility_list-->  
+                        </div><!-- span4 -->
+                    <div class = "span4" ng-controller = "NMISListCtrl" style="display:none">
+                            <div id = "nmis_list">
+                                <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
+                                <div ng-repeat = "facility in facilities" class = "facilities"> 
+                                    <dl>
+                                        <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                        <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
+                                        <dt> State: </dt> <dd> {{facility.state}}</dd><br>
+                                        <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                        <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                        <dt> Facility Type: </dt> <dd>
+{{facility.facility_type}}</dd> <br>
+                                    </dl>
+                                    </div><!-- facilities -->
+                            </div><!-- facility_list -->  
                         </div><!-- span4 -->
             </pane>
         </tabs>
             </div><!--span12 -->
-                <div class = "span4">
-                    <button class="btn" ng-click="panes[0].active = true">Switch to Health</button>
-                    <button class="btn" ng-click="panes[1].active = true">Switch to Education</button>
-                </div>
             </div><!-- row-fluid data data-list -->
         </div><!-- TabsDemoCtrl -->
     </body>
