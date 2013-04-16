@@ -12,17 +12,17 @@ function populate_list(csv_addr, $scope, $http) {
       $scope.facilities = csv(data).toObjects();
       $scope.predicate = 'facility_name';
       $scope.radioModel = 'Name';
-      $scope.sortby = function(key) {
-        $scope.facilities = _.sortBy($scope.facilities, 
-                function(fac){ return fac[key].toLowerCase();});
-      };
+      // $scope.sortby = function(key) {
+//         $scope.facilities = _.sortBy($scope.facilities,
+//                 function(fac){ return fac[key].toLowerCase();});
+//       };
     });
 }
 
 function  FaciltiesListCtrl($scope, $http) {
   populate_list("csvs/Aba_North_Health_Facility_List.csv", $scope, $http);
 }
-  
+
 
 var NMISListCtrl = function($scope, $http) {
   populate_list("csvs/Aba_North_NMIS_List.csv", $scope, $http);
