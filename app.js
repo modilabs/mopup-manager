@@ -11,7 +11,7 @@ var TabsDemoCtrl = function ($scope) {
 
 function populate_list(csv_addr, $scope, $http) {
   $http.get(csv_addr)
-    .success(function(data){
+    .success(function(data, status, headers, config){
       $scope.facilities = csv(data).toObjects();
       $scope.predicate = 'facility_name';
       $scope.radioModel = 'Name';
@@ -20,19 +20,19 @@ function populate_list(csv_addr, $scope, $http) {
                 function(fac){ return fac[key].toLowerCase();});
       };
     })
-    .fail(function(err){
-      alert(err);
+    .error(function(data, status, headers, config){
+      alert(csv_addr + " is not valid file format, please check!");
     });
 
 }
 
-function  FaciltiesListCtrl($scope, $http) {
-  var file = "csvs/Aba_North_Health_Facility_List";
+var FacilitiesListCtrl = function($scope, $http) {
+  var file = "csvs/Aba_North_Health_Facility_List.csv";
   populate_list(file, $scope, $http);
-}
+};
   
 
 var NMISListCtrl = function($scope, $http) {
-  var file = "csvs/Aba_North_NMIS_List";
+  var file = "csvs/Aba_North_NMIS_List.csv";
   populate_list(file, $scope, $http);
 };
