@@ -16,15 +16,9 @@
                 <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
                     <div class = "row-fluid data data-list">
                         <div class = "span12">
-                            <div class = "span4" ng-controller = "FacilitiesListCtrl">
+                            <div name="facility_section" class = "span4" ng-controller = "FacilitiesListCtrl">
                                 <h4> Official LGA facility list ({{facilities.length}}) </h4>
                                 <div id = "lga_list" >
-                                    <div class='buttons'>
-                                        <button class="btn btn-success" ng-click="previous()">previous</button>
-                                        <div class='pull-right'>
-                                            <button class="btn btn-danger" ng-click="next()">next</button>
-                                        </div>
-                                    </div>
                                     <div id="lga_list" class = "facilities">
                                         <dl>
                                             <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
@@ -35,6 +29,14 @@
                                             <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
                                         </dl>
                                     </div><!-- facilities -->
+                                    <div class='buttons'>
+                                        <div class='pull-left'>
+                                            <button class="btn btn-success" ng-click="previous()">previous</button>
+                                        </div>
+                                        <div class='pull-right'>
+                                            <button class="btn btn-danger" ng-click="next()">next</button>
+                                        </div>
+                                    </div>
                                 </div><!-- lga_list -->
                             </div><!-- span4 -->
                             <div class = "span4" ng-controller = "NMISListCtrl">

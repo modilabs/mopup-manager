@@ -26,12 +26,13 @@ var FacilitiesListCtrl = function($scope, $http) {
       $scope.index = 0;
       $scope.facility = $scope.facilities[$scope.index];
       
+      //looping selector
       $scope._changeI = function(delta){
         var newI = $scope.index + delta;
         if(newI >= $scope.facilities.length) {
           newI = 0;
-        } else if(newI <= 0) {
-          newI = $scope.facilities.length;
+        } else if(newI < 0) {
+          newI = $scope.facilities.length-1;
         }
         $scope.index = newI;
         $scope.facility = $scope.facilities[newI];
