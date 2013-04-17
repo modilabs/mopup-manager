@@ -31,7 +31,7 @@ var FacilitiesListCtrl = function($scope, $http) {
         if(newI >= $scope.facilities.length) {
           newI = 0;
         } else if(newI <= 0) {
-          newI = $scope.facilities.length;
+          newI = $scope.facilities.length - 1;
         }
         $scope.index = newI;
         $scope.facility = $scope.facilities[newI];

@@ -19,7 +19,8 @@
                             <div class = "span4" ng-controller = "FacilitiesListCtrl">
                                 <h4> Official LGA facility list ({{facilities.length}}) </h4>
                                 <div id = "lga_list">
-																    <button class="btn btn-success prev" ng-click="previous()">previous</button>
+                                    <button class="btn btn-success prev" ng-click="previous()"> Previous </button>
+                                    <button class="btn btn-danger next" ng-click="next()"> Next </button>
                                     <div id="lga_list" class = "facilities">
                                         <dl>
                                             <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
@@ -30,7 +31,6 @@
                                             <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
                                         </dl>
                                     </div><!-- facilities -->
-                                    <button class="btn btn-danger next" ng-click="next()">next</button>
                                 </div><!-- lga_list -->
                             </div><!-- span4 -->
                             <div class = "span4" ng-controller = "NMISListCtrl">
