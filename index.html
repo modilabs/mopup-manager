@@ -12,65 +12,73 @@
     </head>
     <body>
         <div ng-controller="TabsCtrl">
-            <tabs>
-                <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
-                    <div class = "row-fluid data data-list">
-                        <div class = "span12">
-                            <div name="facility_section" class = "span4" ng-controller = "FacilitiesListCtrl">
-                                <h4> Official LGA facility list ({{facilities.length}}) </h4>
-                                <div id = "lga_list" >
-                                    <div id="lga_list" class = "facilities">
-                                        <dl>
-                                            <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
-                                            <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
-                                            <dt> State: </dt> <dd> {{facility.state}}</dd><br>
-                                            <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
-                                            <dt> Community: </dt><dd> {{facility.community}}</dd><br>
-                                            <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
-                                        </dl>
-                                    </div><!-- facilities -->
-                                    <div class='buttons'>
-                                        <div class='pull-left'>
-                                            <button class="btn btn-success" ng-click="previous()">previous</button>
-                                        </div>
-                                        <div class='pull-right'>
-                                            <button class="btn btn-danger" ng-click="next()">next</button>
-                                        </div>
-                                    </div>
-                                </div><!-- lga_list -->
-                            </div><!-- span4 -->
-                            <div class = "span4" ng-controller = "NMISListCtrl">
-                            Sort by:
-                                <div class = "btn-group" data-toggle="buttons-checkbox">
-                                    <button class="btn" btn-radio="'Name'" ng-model="radioModel" ng-click="predicate = 'facility_name'; reverse=false"> Name </button>
-                                    <button class="btn" btn-radio="'Type'" ng-model="radioModel" ng-click="predicate = 'facility_type'; reverse=false"> Type </button>
-                                    <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="predicate = 'ward'; reverse=false"> Ward </button>
-                                    <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="predicate = 'community'; reverse=false"> Community </button>
-                                </div>
-                                <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
-                                <div id = "nmis_list">
-                                    <div id="nmis_list_{{$index}}" ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
-                                        <dl>
-                                            <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
-                                            <dt> LGA:</dt> <dd> {{facility.mylga}}</dd><br>
-                                            <dt> State: </dt> <dd> {{facility.mylga_state}}</dd><br>
-                                            <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
-                                            <dt> Community: </dt><dd> {{facility.community}}</dd><br>
-                                            <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
-                                            <div class='buttons'>
-                                                <button class="btn btn-success" ng-click="extract">Matches!</button>
-                                                <div class='pull-right'>
-                                                    <button class="btn btn-danger" ng-click="extract">Report a problem</button>
-                                                </div>
+            <div ng-controller="RootCtrl">
+                <tabs>
+                    <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
+                        <div class = "row-fluid data data-list">
+                            <div class = "span12">
+                                <div name="facility_section" class = "span4" ng-controller = "FacilitiesListCtrl">
+                                    <h4> Official LGA facility list ({{facilities.length}}) </h4>
+                                    <div id = "lga_list" >
+                                        <div id="lga_list" class = "facilities">
+                                            <dl>
+                                                <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                                <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
+                                                <dt> State: </dt> <dd> {{facility.state}}</dd><br>
+                                                <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                                <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                                <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
+                                            </dl>
+                                        </div><!-- facilities -->
+                                        <div class='buttons'>
+                                            <div class='pull-left'>
+                                                <button class="btn btn-success" ng-click="previous()">previous</button>
                                             </div>
-                                        </dl>
-                                    </div><!-- facilities -->
-                                </div><!-- nmis_list -->
-                            </div><!-- span4 -->
-                        </div><!--span12 -->
-                    </div><!-- row-fluid data data-list -->
-                </pane>
-            </tabs>
+                                            <div class='pull-right'>
+                                                <button class="btn btn-danger" ng-click="next()">next</button>
+                                            </div>
+                                        </div>
+                                    </div><!-- lga_list -->
+                                </div><!-- span4 -->
+                                <div class = "span4" ng-controller = "NMISListCtrl">
+                                Sort by:
+                                    <div class = "btn-group" data-toggle="buttons-checkbox">
+                                        <button class="btn" btn-radio="'Name'" ng-model="radioModel" ng-click="predicate = 'facility_name'; reverse=false"> Name </button>
+                                        <button class="btn" btn-radio="'Type'" ng-model="radioModel" ng-click="predicate = 'facility_type'; reverse=false"> Type </button>
+                                        <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="predicate = 'ward'; reverse=false"> Ward </button>
+                                        <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="predicate = 'community'; reverse=false"> Community </button>
+                                    </div>
+                                    <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
+                                    <div id = "nmis_list">
+                                        <div id="nmis_list_{{$index}}" ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
+                                            <dl>
+                                                <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                                <dt> LGA:</dt> <dd> {{facility.mylga}}</dd><br>
+                                                <dt> State: </dt> <dd> {{facility.mylga_state}}</dd><br>
+                                                <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                                <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                                <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
+                                                <div class='buttons'>
+                                                    <button class="btn btn-success" ng-click="match(facility)">Matches!</button>
+                                                    <div class='pull-right'>
+                                                        <button class="btn btn-danger" ng-click="fail(facility)">Report a problem</button>
+                                                    </div>
+                                                </div>
+                                            </dl>
+                                        </div><!-- facilities -->
+                                    </div><!-- nmis_list -->
+                                </div><!-- span4 -->
+                                <div class = "span4" ng-controller = "PairedListCtrl">
+                                  <h4>Matched List</h4>
+                                    <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
+                                    </div>
+                                </div>
+
+                            </div><!--span12 -->
+                        </div><!-- row-fluid data data-list -->
+                    </pane>
+                </tabs>
+            </div><!-- RootCtrl -->
         </div><!-- TabsDemoCtrl -->
     </body>
 </html>

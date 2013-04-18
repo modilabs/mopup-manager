@@ -1,9 +1,4 @@
-var myapp = angular.module('mopup', ['ui.bootstrap']);
-
-myapp.factory('paired_list', function(FacilitiesListCtrl, NMISListCtrl){
-});
-myapp.factory('failed_list', function(FacilitiesListCtrl, NMISListCtrl){
-});
+var mopup = angular.module('mopup', ['ui.bootstrap']);
 
 var TabsCtrl = function ($scope) {
   $scope.panes = [
@@ -15,7 +10,18 @@ var TabsCtrl = function ($scope) {
   ];
 };
 
-
+var RootCtrl = function($rootScope) {
+  $rootScope.$on('currentFacility', function(evt, fac){
+    $rootScope.currentFacility = fac;
+  });
+  $rootScope.$on('matching_request', function(evt, fac){
+    if ($rootScope.currentFacility !== undefined &&
+      fac !== undefined) {
+        $rootScope.$broadcast('pair_confirmed', 
+          [$rootScope.currentFacility, fac]);
+      }
+  });
+};
 
 var FacilitiesListCtrl = function($scope, $http) {
   var file = "docs/Aba_North_Health_Facility_List.csv";
@@ -37,11 +43,14 @@ var FacilitiesListCtrl = function($scope, $http) {
         $scope.index = newI;
         $scope.facility = $scope.facilities[newI];
       };
+      $scope.$emit("currentFacility", $scope.facility);
       $scope.next = function(){
         $scope._changeI(1);
+        $scope.$emit("currentFacility", $scope.facility);
       };
       $scope.previous = function(){
         $scope._changeI(-1);
+        $scope.$emit("currentFacility", $scope.facility);
       };
     })
     .error(function(data, status, headers, config){
@@ -63,12 +72,35 @@ var NMISListCtrl = function($scope, $http) {
         $scope.facilities = _.sortBy($scope.facilities, 
                 function(fac){ return fac[key].toLowerCase();});
       };
+      $scope.match = function(fac){
+        $scope.$emit('matching_request', fac);
+      };
+      $scope.fail = function(fac){
+        console.log(fac);
+      };
     })
     .error(function(data, status, headers, config){
       alert(file + " is not valid file format, please check!");
     });
 };
 
-var PairdListCtrol = function($scope) {
+var PairedListCtrl = function($scope, $rootScope, $http) {
+  var file = "docs/paired_list.json";
+  $http.get(file)
+    .success(function(data, status, headers, config){
+      if (data.length === 0){
+        $scope.facility = [];
+      }else{
+        $scope.facility = JSON.parse(data);
+      }
+      $scope.$on("pair_confirmed", function(evt, fac){
+        console.log(fac);
+        //pushing to the front using unshift
+        //$scope.facility.unshift(fac);
+      });
+    })
+    .error(function(data, status, headers, config){
+      alert(file + " is not valid file format, please check!");
+    });
 };
 
