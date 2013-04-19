@@ -22,6 +22,11 @@ var RootCtrl = function($rootScope) {
           [$rootScope.currentFacility, fac]);
       }
   });
+  $rootScope.$on('rejecting_request', function(evt, fac){
+    if (true) {
+        $rootScope.$broadcast('reject_confirmed', fac);
+      }
+  });
 };
 
 var FacilitiesListCtrl = function($scope, $http) {
@@ -76,7 +81,7 @@ var NMISListCtrl = function($scope, $http) {
         $scope.$emit('matching_request', fac);
       };
       $scope.fail = function(fac){
-        console.log(fac);
+        $scope.$emit('rejecting_request', fac);
       };
     })
     .error(function(data, status, headers, config){
@@ -110,13 +115,13 @@ var RejectedListCtrl = function($scope, $rootScope, $http) {
   $http.get(file)
     .success(function(data, status, headers, config){
       if (data.length === 0){
-        $scope.pairs = [];
+        $scope.rejects = [];
       }else{
-        $scope.pairs = JSON.parse(data);
+        $scope.rejects = JSON.parse(data);
       }
-      $scope.$on("pair_confirmed", function(evt, fac){
+      $scope.$on("reject_confirmed", function(evt, fac){
         //pushing to the front using unshift
-        $scope.pairs.unshift(fac);
+        $scope.rejects.unshift(fac);
       });
     })
     .error(function(data, status, headers, config){

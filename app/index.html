@@ -86,12 +86,10 @@
                                             </accordion-group>
                                             <accordion-group heading="Rejected Facility">
                                                 <div ng-controller = "RejectedListCtrl">
-                                                    <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
+                                                    <div id="rejected_list_{{$index}}" ng-repeat = "reject in rejects | orderBy:predicate:reverse" class = "rejects">
                                                         <dl>
-                                                            <dt> Facility Name:</dt><dd>{{pair[0].facility_name}}</dd><br>
-                                                            <dt> Facility Location </dt><dd> {{pair[0].community}}, {{pair[0].ward}}</dd><br>
-                                                            <dt> NMIS Name:</dt><dd>{{pair[1].facility_name}}</dd><br>
-                                                            <dt> NMIS Location </dt><dd> {{pair[1].community}}, {{pair[1].ward}}</dd><br>
+                                                            <dt> NMIS Name:</dt><dd>{{reject.facility_name}}</dd><br>
+                                                            <dt> NMIS Location </dt><dd> {{reject.community}}, {{reject.ward}}</dd><br>
                                                         </dl>
                                                     </div> <!-- facilities -->
                                                 </div>
