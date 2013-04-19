@@ -30,15 +30,17 @@
                                                 <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
                                             </dl>
                                         </div><!-- facilities -->
-                                        <div class='buttons'>
-                                            <div class='pull-left'>
-                                                <button class="btn btn-success" ng-click="previous()">previous</button>
-                                            </div>
-                                            <div class='pull-right'>
-                                                <button class="btn btn-danger" ng-click="next()">next</button>
-                                            </div>
-                                        </div>
-                                    </div><!-- lga_list -->
+																				<div class = 'row-fluid'>
+	                                        <div class='buttons'>
+	                                            <div class='pull-left'>
+	                                                <button class="btn btn-success" ng-click="previous()">previous</button>
+	                                            </div>
+	                                            <div class='pull-right'>
+	                                                <button class="btn btn-danger" ng-click="next()">next</button>
+	                                            </div>
+	                                        </div>
+																				</div>
+	                                    </div><!-- lga_list -->
                                 </div><!-- span4 -->
                                 <div class = "span4" ng-controller = "NMISListCtrl">
                                 Sort by:
@@ -58,7 +60,7 @@
                                                 <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
                                                 <dt> Community: </dt><dd> {{facility.community}}</dd><br>
                                                 <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
-                                                <div class='buttons'>
+                                                <div class='row-fluid'>
                                                     <button class="btn btn-success" ng-click="match(facility)">Matches!</button>
                                                     <div class='pull-right'>
                                                         <button class="btn btn-danger" ng-click="fail(facility)">Report a problem</button>
