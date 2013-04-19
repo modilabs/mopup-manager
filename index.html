@@ -50,7 +50,7 @@
                                     </div>
                                     <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
                                     <div id = "nmis_list">
-                                        <div id="nmis_list_{{$index}}" ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
+                                        <div ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
                                             <dl>
                                                 <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
                                                 <dt> LGA:</dt> <dd> {{facility.mylga}}</dd><br>
