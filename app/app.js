@@ -104,3 +104,22 @@ var PairedListCtrl = function($scope, $rootScope, $http) {
     });
 };
 
+var RejectedListCtrl = function($scope, $rootScope, $http) {
+  var file = "docs/rejected_list.json";
+  $scope.oneAtATime = true;
+  $http.get(file)
+    .success(function(data, status, headers, config){
+      if (data.length === 0){
+        $scope.pairs = [];
+      }else{
+        $scope.pairs = JSON.parse(data);
+      }
+      $scope.$on("pair_confirmed", function(evt, fac){
+        //pushing to the front using unshift
+        $scope.pairs.unshift(fac);
+      });
+    })
+    .error(function(data, status, headers, config){
+      alert(file + " is not valid file format, please check!");
+    });
+};
