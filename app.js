@@ -4,10 +4,11 @@ var TabsCtrl = function ($scope) {
   $scope.panes = [
     { title: "Health Facilities", 
       content: "Health Facilities will be here", 
-      active: true}//,
-//    { title: "Education Facilities", 
-//      content: "Education Facilities will be here"}
-  ];
+      active: true},
+    { title: "Education Facilities", 
+      content: "Education Facilities will be here",
+      active: false}
+    ];
 };
 
 var RootCtrl = function($rootScope) {
