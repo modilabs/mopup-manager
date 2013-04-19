@@ -1,0 +1,13 @@
+{
+    "name": "mopup-manager",
+    "description": "match making for TAs during NMIS verification process",
+    "version": "0.0.1",
+    "main": "server.js",
+    "dependencies": {
+        "express": "*",
+        "socket.io": "*",
+        "jquery":"*",
+        "monk":"*",
+        "underscore":"*"
+    }
+}
