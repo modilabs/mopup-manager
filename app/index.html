@@ -15,12 +15,13 @@
             <div ng-controller="RootCtrl">
                 <tabs>
                     <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
-                        <div class = "row-fluid data data-list">
+                        <div class = "row-fluid">
                             <div class = "span12">
-                                <div name="facility_section" class = "span4" ng-controller = "FacilitiesListCtrl">
+															<div class="row-fluid">
+                                <div class = "span4" name="facility_section" ng-controller = "FacilitiesListCtrl">
                                     <h4> Official LGA facility list ({{facilities.length}}) </h4>
-                                    <div id = "lga_list" >
-                                        <div id="lga_list" class = "facilities">
+																		<div id = "lga_list" >
+                                        <div class = "facilities">
                                             <dl>
                                                 <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
                                                 <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
@@ -31,16 +32,16 @@
                                             </dl>
                                         </div><!-- facilities -->
 																				<div class = 'row-fluid'>
-	                                        <div class='buttons'>
-	                                            <div class='pull-left'>
-	                                                <button class="btn btn-success" ng-click="previous()">previous</button>
-	                                            </div>
-	                                            <div class='pull-right'>
-	                                                <button class="btn btn-danger" ng-click="next()">next</button>
-	                                            </div>
-	                                        </div>
+																					<div class='buttons'>
+																						<div class='pull-left'>
+																							<button class="btn btn-success" ng-click="previous()">previous</button>
+																						</div>
+																						<div class='pull-right'>
+																							<button class="btn btn-danger" ng-click="next()">next</button>
+																						</div>
+																					</div>
 																				</div>
-	                                    </div><!-- lga_list -->
+																		</div><!-- lga_list -->
                                 </div><!-- span4 -->
                                 <div class = "span4" ng-controller = "NMISListCtrl">
                                 Sort by:
@@ -67,11 +68,11 @@
                                             </dl>
                                         </div><!-- facilities -->
                                     </div><!-- nmis_list -->
-                                </div><!-- span4 -->
+                                </div> <!-- span4 -->
                                 <div class = "span4">
                                   <h4>Matched List</h4>
                                     <div class="accordions">
-                                        <accordion close-others="oneAtATime">
+                                        <accordion close-others= true>
                                             <accordion-group heading="Matched Facility">
                                                 <div ng-controller = "PairedListCtrl">
                                                     <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
@@ -97,6 +98,7 @@
                                         </accordion>
                                     </div> <!-- accordion -->
                                 </div> <!-- span4 -->
+															</div> <!-- row fluid -->
                             </div><!--span12 -->
                         </div><!-- row-fluid data data-list -->
                     </pane>
