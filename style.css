@@ -2,23 +2,12 @@ body {
   background-color: #fdf7e3; 
 }
 
-.navbar {
-  margin-bottom: 30px; }
-  .navbar .unhighlighted-brand {
-    float: left;
-    display: block;
-    padding: 10px 20px 10px;
-    margin-left: -20px;
-    font-size: 15px;
-    font-weight: 200;
-    color: black;
-    text-shadow: 0 1px 0 #777777; }
-  .navbar .container {
-    margin-left: 40px; }
-
 .data h4 {
   text-align: center;
   font-weight: 400; }
+
+.data-list {
+  padding-left: 20px; }
 
 .matched {
   text-align: center; }
@@ -26,29 +15,22 @@ body {
 	dl{
 		padding: 10px;
 	}
-dt {
-  display: inline-block; }
-
-dd {
-  display: inline-block; }
-
-.data-list {
-  padding-left: 20px; 
-}
+		dt {
+		  display: inline-block; }
+		dd {
+		  display: inline-block; }
 
 #nmis_list{
-  height: 600px;
+  height: 700px;
   overflow: auto;
 }
-
-#nmis_list .facilities{
-  background-color: white;
-}
+	#nmis_list .facilities{
+	  background-color: white;
+	}
 
 #lga_list .facilities {
   background-color:orange;
 }
-
-.facility_section {
-  padding-left:20px;
-}
+	.facility_section {
+	  padding-left:20px;
+	}
