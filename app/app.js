@@ -86,6 +86,7 @@ var NMISListCtrl = function($scope, $http) {
 
 var PairedListCtrl = function($scope, $rootScope, $http) {
   var file = "docs/paired_list.json";
+  $scope.oneAtATime = true;
   $http.get(file)
     .success(function(data, status, headers, config){
       if (data.length === 0){
