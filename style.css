@@ -20,7 +20,7 @@ body {
 		  display: inline-block; }
 
 #nmis_list{
-  height: 600px;
+  height: 700px;
   overflow: auto;
 }
 	#nmis_list .facilities{
