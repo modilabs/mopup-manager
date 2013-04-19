@@ -1,0 +1,110 @@
+<!doctype html>
+<html ng-app="mopup">
+    <head>
+        <script src="http://underscorejs.org/underscore-min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+        <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="csv.js"></script>
+        <script src="app.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div ng-controller="TabsCtrl">
+            <div ng-controller="RootCtrl">
+                <tabs>
+                    <pane ng-repeat="pane in panes" heading="{{pane.title}}" active="pane.active">
+                        <div class = "row-fluid">
+                            <div class = "span12">
+															<div class="row-fluid">
+                                <div class = "span4" name="facility_section" ng-controller = "FacilitiesListCtrl">
+                                    <h4> Official LGA facility list ({{facilities.length}}) </h4>
+																		<div id = "lga_list" >
+                                        <div class = "facilities">
+                                            <dl>
+                                                <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                                <dt> LGA:</dt> <dd> {{facility.lga}}</dd><br>
+                                                <dt> State: </dt> <dd> {{facility.state}}</dd><br>
+                                                <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                                <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                                <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
+                                            </dl>
+                                        </div><!-- facilities -->
+																				<div class = 'row-fluid'>
+																					<div class='buttons'>
+																						<div class='pull-left'>
+																							<button class="btn btn-success" ng-click="previous()">previous</button>
+																						</div>
+																						<div class='pull-right'>
+																							<button class="btn btn-danger" ng-click="next()">next</button>
+																						</div>
+																					</div>
+																				</div>
+																		</div><!-- lga_list -->
+                                </div><!-- span4 -->
+                                <div class = "span4" ng-controller = "NMISListCtrl">
+                                Sort by:
+                                    <div class = "btn-group" data-toggle="buttons-checkbox">
+                                        <button class="btn" btn-radio="'Name'" ng-model="radioModel" ng-click="predicate = 'facility_name'; reverse=false"> Name </button>
+                                        <button class="btn" btn-radio="'Type'" ng-model="radioModel" ng-click="predicate = 'facility_type'; reverse=false"> Type </button>
+                                        <button class="btn" btn-radio="'Ward'" ng-model="radioModel" ng-click="predicate = 'ward'; reverse=false"> Ward </button>
+                                        <button class="btn" btn-radio="'Community'" ng-model="radioModel" ng-click="predicate = 'community'; reverse=false"> Community </button>
+                                    </div>
+                                    <h4> List of facilities in NMIS ({{facilities.length}}) </h4>
+                                    <div id = "nmis_list">
+                                        <div ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
+                                            <dl>
+                                                <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
+                                                <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
+                                                <dt> Community: </dt><dd> {{facility.community}}</dd><br>
+                                                <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
+                                                <div class='row-fluid'>
+                                                    <button class="btn btn-success" ng-click="match(facility)">Matches!</button>
+                                                    <div class='pull-right'>
+                                                        <button class="btn btn-danger" ng-click="fail(facility)">Report a problem</button>
+                                                    </div>
+                                                </div>
+                                            </dl>
+                                        </div><!-- facilities -->
+                                    </div><!-- nmis_list -->
+                                </div> <!-- span4 -->
+                                <div class = "span4">
+                                  <h4>Matched List</h4>
+                                    <div class="accordions">
+                                        <accordion close-others= true>
+                                            <accordion-group heading="Matched Facility">
+                                                <div ng-controller = "PairedListCtrl">
+                                                    <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
+                                                        <dl>
+                                                            <dt> Facility Name:</dt><dd>{{pair[0].facility_name}}</dd><br>
+                                                            <dt> Facility Location </dt><dd> {{pair[0].community}}, {{pair[0].ward}}</dd><br>
+                                                            <dt> NMIS Name:</dt><dd>{{pair[1].facility_name}}</dd><br>
+                                                            <dt> NMIS Location </dt><dd> {{pair[1].community}}, {{pair[1].ward}}</dd><br>
+                                                        </dl>
+                                                    </div> <!-- facilities -->
+                                                </div>
+                                            </accordion-group>
+                                            <accordion-group heading="Rejected Facility">
+                                                <div ng-controller = "RejectedListCtrl">
+                                                    <div id="rejected_list_{{$index}}" ng-repeat = "reject in rejects | orderBy:predicate:reverse" class = "rejects">
+                                                        <dl>
+                                                            <dt> NMIS Name:</dt><dd>{{reject.facility_name}}</dd><br>
+                                                            <dt> NMIS Location </dt><dd> {{reject.community}}, {{reject.ward}}</dd><br>
+                                                        </dl>
+                                                    </div> <!-- facilities -->
+                                                </div>
+																						</accordion-group>
+                                        </accordion>
+                                    </div> <!-- accordion -->
+                                </div> <!-- span4 -->
+															</div> <!-- row fluid -->
+                            </div><!--span12 -->
+                        </div><!-- row-fluid data data-list -->
+                    </pane>
+                </tabs>
+            </div><!-- RootCtrl -->
+        </div><!-- TabsCtrl -->
+        <script src="front.js"></script>
+    </body>
+</html>
