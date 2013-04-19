@@ -68,27 +68,28 @@
                                         </div><!-- facilities -->
                                     </div><!-- nmis_list -->
                                 </div><!-- span4 -->
-                                <div class = "span4" ng-controller = "PairedListCtrl">
+                                <div class = "span4">
                                   <h4>Matched List</h4>
-																	<div ng-controller="MatchedAccordion">
-																		<accordion close-others="oneAtATime">
-																			<accordion-group heading="Matched Facility">
-																				<div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
-																						<dl>
-																								<dt> Facility Name:</dt><dd>{{pair[0].facility_name}}</dd><br>
-																								<dt> Facility Location </dt><dd> {{pair[0].community}}, {{pair[0].ward}}</dd><br>
-																								<dt> NMIS Name:</dt><dd>{{pair[1].facility_name}}</dd><br>
-																								<dt> NMIS Location </dt><dd> {{pair[1].community}}, {{pair[1].ward}}</dd><br>
-																						</dl>
-																					</div> <!-- facilities -->
-																				</div>
-																			</accordion-group>
-																			<accordion-group heading="Rejected Facility">
-																				//RandomControl	
-																			</accordion-group>
-																		</accordion>
-																	</div>
-																</div> <!-- span4 -->
+                                    <div class="accordions">
+                                        <accordion close-others="oneAtATime">
+                                            <accordion-group heading="Matched Facility">
+                                                <div ng-controller = "PairedListCtrl">
+                                                    <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
+                                                        <dl>
+                                                            <dt> Facility Name:</dt><dd>{{pair[0].facility_name}}</dd><br>
+                                                            <dt> Facility Location </dt><dd> {{pair[0].community}}, {{pair[0].ward}}</dd><br>
+                                                            <dt> NMIS Name:</dt><dd>{{pair[1].facility_name}}</dd><br>
+                                                            <dt> NMIS Location </dt><dd> {{pair[1].community}}, {{pair[1].ward}}</dd><br>
+                                                        </dl>
+                                                    </div> <!-- facilities -->
+                                                </div>
+                                            </accordion-group>
+                                            <accordion-group heading="Rejected Facility">
+                                                //RandomControl	
+                                            </accordion-group>
+                                        </accordion>
+                                    </div> <!-- accordion -->
+                                </div> <!-- span4 -->
                             </div><!--span12 -->
                         </div><!-- row-fluid data data-list -->
                     </pane>
