@@ -1,5 +1,6 @@
 body {
-  background-color: #fdf7e3; }
+  background-color: #fdf7e3; 
+}
 
 .navbar {
   margin-bottom: 30px; }
@@ -32,18 +33,22 @@ dd {
   display: inline-block; }
 
 .data-list {
-  padding-left: 20px; }
+  padding-left: 20px; 
+}
 
 #nmis_list{
   height: 600px;
   overflow: auto;
 }
+
 #nmis_list .facilities{
   background-color: white;
 }
+
 #lga_list .facilities {
   background-color:orange;
 }
+
 .facility_section {
   padding-left:20px;
 }

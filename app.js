@@ -4,9 +4,9 @@ var TabsCtrl = function ($scope) {
   $scope.panes = [
     { title: "Health Facilities", 
       content: "Health Facilities will be here", 
-      active: true},
-    { title: "Education Facilities", 
-      content: "Education Facilities will be here"}
+      active: true}//,
+//    { title: "Education Facilities", 
+//      content: "Education Facilities will be here"}
   ];
 };
 
@@ -42,15 +42,14 @@ var FacilitiesListCtrl = function($scope, $http) {
         }
         $scope.index = newI;
         $scope.facility = $scope.facilities[newI];
+        $scope.$emit("currentFacility", $scope.facility);
       };
       $scope.$emit("currentFacility", $scope.facility);
       $scope.next = function(){
         $scope._changeI(1);
-        $scope.$emit("currentFacility", $scope.facility);
       };
       $scope.previous = function(){
         $scope._changeI(-1);
-        $scope.$emit("currentFacility", $scope.facility);
       };
     })
     .error(function(data, status, headers, config){
