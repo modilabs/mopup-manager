@@ -4,10 +4,10 @@ var TabsCtrl = function ($scope) {
   $scope.panes = [
     { title: "Health Facilities", 
       content: "Health Facilities will be here", 
-      active: true},
-    { title: "Education Facilities", 
-      content: "Education Facilities will be here",
-      active: false}
+      active: true}//,
+//    { title: "Education Facilities", 
+//      content: "Education Facilities will be here",
+//      active: false}
     ];
 };
 
@@ -89,14 +89,13 @@ var PairedListCtrl = function($scope, $rootScope, $http) {
   $http.get(file)
     .success(function(data, status, headers, config){
       if (data.length === 0){
-        $scope.facility = [];
+        $scope.pairs = [];
       }else{
-        $scope.facility = JSON.parse(data);
+        $scope.pairs = JSON.parse(data);
       }
       $scope.$on("pair_confirmed", function(evt, fac){
-        console.log(fac);
         //pushing to the front using unshift
-        //$scope.facility.unshift(fac);
+        $scope.pairs.unshift(fac);
       });
     })
     .error(function(data, status, headers, config){

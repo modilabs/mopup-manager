@@ -4,9 +4,10 @@
         <script src="http://underscorejs.org/underscore-min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
         <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="csv.js"></script>
         <script src="app.js"></script>
+        <script src="front.js"></script>
         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
     </head>
@@ -55,8 +56,6 @@
                                         <div ng-repeat = "facility in facilities | orderBy:predicate:reverse" class = "facilities">
                                             <dl>
                                                 <dt> Name:</dt><dd>{{facility.facility_name}}</dd><br>
-                                                <dt> LGA:</dt> <dd> {{facility.mylga}}</dd><br>
-                                                <dt> State: </dt> <dd> {{facility.mylga_state}}</dd><br>
                                                 <dt> Ward </dt><dd> {{facility.ward}} </dd><br>
                                                 <dt> Community: </dt><dd> {{facility.community}}</dd><br>
                                                 <dt> Facility Type: </dt> <dd> {{facility.facility_type}}</dd> <br>
@@ -72,8 +71,16 @@
                                 </div><!-- span4 -->
                                 <div class = "span4" ng-controller = "PairedListCtrl">
                                   <h4>Matched List</h4>
+                                  <div id="match_list">
                                     <div id="matched_list_{{$index}}" ng-repeat = "pair in pairs | orderBy:predicate:reverse" class = "pairs">
-                                    </div>
+                                        <dl>
+                                            <dt> Facility Name:</dt><dd>{{pair[0].facility_name}}</dd><br>
+                                            <dt> Facility Location </dt><dd> {{pair[0].community}}, {{pair[0].ward}}</dd><br>
+                                            <dt> NMIS Name:</dt><dd>{{pair[1].facility_name}}</dd><br>
+                                            <dt> NMIS Location </dt><dd> {{pair[1].community}}, {{pair[1].ward}}</dd><br>
+                                        </dl>
+                                    </div><!-- facilities -->
+                                  </div>
                                 </div>
 
                             </div><!--span12 -->

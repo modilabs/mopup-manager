@@ -21,10 +21,16 @@ body {
 		  display: inline-block; }
 
 #nmis_list{
-  height: 700px;
   overflow: auto;
 }
 	#nmis_list .facilities{
+	  background-color: white;
+	}
+
+#match_list{
+  overflow: auto;
+}
+	#match_list .pairs{
 	  background-color: white;
 	}
 
