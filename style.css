@@ -1,5 +1,6 @@
 body {
-  background-color: #fdf7e3; 
+  background-color: #fdf7e3;
+	overflow-x: hidden;
 }
 
 .data h4 {
@@ -27,12 +28,9 @@ body {
 	  background-color: white;
 	}
 
-#match_list{
-  overflow: auto;
+#match_list .pairs{
+  background-color: white;
 }
-	#match_list .pairs{
-	  background-color: white;
-	}
 
 #lga_list .facilities {
   background-color:orange;
